@@ -14,6 +14,14 @@
         <input type="submit" value="Delete Data">
 
 <?php
-include 'connect.php';
+include "connect.php";
+$delete_id = $_POST['delete_id'];
+$sql = "DELETE FROM user WHERE id='$delete_id'";
+$result = $conn->query($sql);
+if ($result) {
+    echo "Data deleted successfully.";
+} else {
+    echo "Error deleting data: " . $conn->error;
+}
 
-F
+?>

@@ -25,7 +25,7 @@ if (!empty($id)) {
     $result = $conn->query($sql);
     if ($result && $result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $searchResults[] = $row;
+            echo $row[]
         }
     }
 }
@@ -43,10 +43,10 @@ if (!empty($id)) {
             </tr>
             <?php foreach ($searchResults as $row): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($row["name"]); ?></td>
-                    <td><?php echo htmlspecialchars($row["id"]); ?></td>
-                    <td><?php echo htmlspecialchars($row["age"]); ?></td>
-                    <td><?php echo htmlspecialchars($row["cgpa"]); ?></td>
+                    <td><?php echo $row["name"]); ?></td>
+                    <td><?php echo $row["id"]); ?></td>
+                    <td><?php echo $row["age"]); ?></td>
+                    <td><?php echo $row["cgpa"]); ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>

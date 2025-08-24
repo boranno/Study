@@ -6,6 +6,7 @@ $password = "";
 $dbname = "webpractic";
 
 // Create connection
+
 $conn =new mysqli($host,$username,$password,$dbname);
 
 if ($conn->connect_error) {

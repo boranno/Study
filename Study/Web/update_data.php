@@ -22,18 +22,19 @@
 </body>
 </html>
 
-
 <?php
 include 'connect.php';
 
+if (isset($_POST['id']) && isset($_POST['cgpa'])) {
     $id = $_POST['id'];
     $cgpa = $_POST['cgpa'];
 
     $sql = "UPDATE user SET cgpa='$cgpa' WHERE id='$id'";
-    
+
     if ($conn->query($sql) === TRUE) {
-        echo "CGPA updated successfully." . $conn;
+        echo "CGPA updated successfully.";
     } else {
         echo "Error updating CGPA: " . $conn->error;
     }
+} 
 ?>
