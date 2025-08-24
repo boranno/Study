@@ -14,7 +14,7 @@ $result = $conn->query($sql);
     <title>User Data Table</title>
 </head>
 <body>
-    <h1>Data in a table</h1>
+    <h1>Database Data</h1>
     <style>
         table, th {
             border: 1px solid black;

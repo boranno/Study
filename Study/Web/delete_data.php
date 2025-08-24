@@ -7,6 +7,13 @@
 </head>
 <body>
     <H1>Enter ID To Delete Data</H1>
-    <form action=""></form>
-</body>
-</html>
+    <label for="delete_id"> ID :</label>
+    <form action="delete_data.php" method="POST">
+        <input type="text" id="delete_id" name="delete_id" required>
+        <br><br>
+        <input type="submit" value="Delete Data">
+
+<?php
+include 'connect.php';
+
+F
