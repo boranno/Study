@@ -18,10 +18,17 @@ void setup() {
 }
 
 void loop() {
-  LoRa.beginPacket();
-  LoRa.print("Hi this Boranno Golder");
-  LoRa.endPacket();
-  delay(1000);
+  int packetSize = LoRa.parsePacket();
+  if(packetSize)
+  {
+    String massage="";
+    while(!LoRa.available())
+    {
+      char singlechar = (char)LoRa.read();
+      massage+=singlechar;
+    }
+    Serial.println(massage);
+  }
 }
 
 
