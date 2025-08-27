@@ -1,21 +1,32 @@
-#include<RH_ASK.h>
 #include<SPI.h>
-
-RH_ASK rf_driver;
+#include<LoRa.h>
 
 
 void setup() {
   // put your setup code here, to run once:
-  rf_driver.init();
+  Serial.begin(9600);
+  while(!Serial);
+
+
+  if(!LoRa.begin(433E6))
+  {
+    Serial.println("Lora starting failed");
+    while(1);
+
+  }
 
 }
 
 void loop() {
-  const char *msg = "Hello World";
-  rf_driver.send((uint8_t*)msg,strlen(msg));
-  rf_driver.waitPacketSent();
-  delay(1000);
+   LoRa.beginPacket();
+   LoRa.print("Hi this is Boranno Golder");
+   LoRa.endPacket();
 }
+
+
+
+
+
 
 
 
