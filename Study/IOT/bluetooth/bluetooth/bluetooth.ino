@@ -1,31 +1,31 @@
-#include<SPI.h>
-#include<LoRa.h>
+#include<SoftwareSerial.h>
+
+
+
+SoftwareSerial myserial(10,11);
 
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  while(!Serial);
-
-
-  if(!LoRa.begin(433E6))
-  {
-    Serial.println("Lora starting failed");
-    while(1);
-
-  }
+  myserial.begin(9600);
 
 }
 
 void loop() {
-  LoRa.beginPacket();
-  LoRa.print("Hi this Boranno Golder");
-  LoRa.endPacket();
-  delay(1000);
+  
+
+  if(Serial.available())
+  {
+    myserial.write(Serial.read());
+
+  }
+
+  if(myserial.available())
+  {
+    Serial.write(myserial.read());
+
+  }
+  delay(20);
+
 }
-
-
-
-
-
-
