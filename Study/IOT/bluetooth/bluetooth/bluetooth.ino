@@ -1,29 +1,26 @@
-#include<SPI.h>
 #include<LoRa.h>
+#include<SPI.h>
 
 
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  while(!Serial);
 
+SoftwareSerial sim8000(10,11);
 
-  if(!LoRa.begin(433E6))
-  {
-    Serial.println("Lora starting failed");
-    while(1);
-
-  }
+void setup()
+{
+  
+  .begin();
 
 }
-
-void loop() {
-  LoRa.beginPacket();
-  LoRa.print("Hi this Boranno Golder");
-  LoRa.endPacket();
-  delay(1000);
+void loop()
+{
+  sim800.print("AT+CMGF=1");
+  delay(500);
+  sim800.print("AT+CMGS=/"01663633/");
+  delay(500);
+  sim800.print("Hi this is boranno golder");
+  delay(500);
+  sim800.print(26);
 }
-
 
 
 

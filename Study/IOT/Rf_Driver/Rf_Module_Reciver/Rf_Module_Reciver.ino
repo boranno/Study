@@ -1,29 +1,28 @@
-#include<RH_ASK.h>
-#include<SPI.h>
+ 
+ #include <SPI.h>
+ #include <nRF24L01.h>
+ #include <RF24.h>
+ 
+ RF24 radio(9, 8);
+ 
+ const byte address[6] = "00001";
 
-RH_ASK rf_driver;
+ void setup() {
 
+ radio.begin();
 
-void setup() {
-  // put your setup code here, to run once:
-  rf_driver.init();
-  Serial.begin(9600);
+ radio.openWritingPipe(address);
+ 
+ radio.stopListening();
+ }
+ void loop() {
+ 
 
-}
-
-void loop() {
-  uint8_t buff[11];
-  uint8_t buflen =sizeoff(buf);
-
-  if(rf_driver.recv(buf,&buflen))
-  {
-    Serial.println((char*)buf);
-  }
-
-}
-
-
-
+ const char text[] = "Hello World";
+ radio.write(&text, sizeof(text));
+ delay(1000);
+ 
+ }
 
 
 
